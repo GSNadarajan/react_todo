@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
-const Main = () => {
+const Counter = () => {
 
     const [count , setcount] = useState(99);
+
+    
 
     function incrementer(){
         setcount(count + 1);
@@ -34,4 +36,4 @@ const Main = () => {
     )
 }
 
-export default Main;
+export default Counter;
