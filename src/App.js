@@ -1,67 +1,63 @@
 import './App.css';
 import { useState } from 'react';
 import Header from './components/Header';
-import Counter from './components/Counter';
 import Todo from './components/Todo';
-
+import Footer from './components/Footer';
 
 function App() {
-  
-          //Here I've written all the functions and usestate which are passing through props
+  // use state for maintaining the tasks
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem("todolist")) || []);
 
-          //usestate for maintaining the tasks
-          
-          const [items , setItem ] = useState(JSON.parse(localStorage.getItem("todolist")))
+  // To delete the task corresponding to the id
+  function handleDelete(id) {
+    alert('Are you sure you want to delete this task?');
+    const updatedItems = items.filter(item => item.id !== id);
+    setItems(updatedItems);
+    localStorage.setItem("todolist", JSON.stringify(updatedItems));
+  }
 
-         //To delete the task corresponding to the id
+  // To check the task whether it is completed or not
+  function handleCheck(id) {
+    const updatedItems = items.map(item => item.id === id ? { ...item, checked: !item.checked } : item);
+    setItems(updatedItems);
+    localStorage.setItem("todolist", JSON.stringify(updatedItems));
+  }
 
-          function handleDelete (id){
-            alert('Are you sure to want to delete this task ?')
-            console.log(id);
-            const listitems = items.filter(item => item.id !== id);
-            setItem(listitems);
-            localStorage.setItem("todolist",JSON.stringify(listitems))
-          }
-    
-          //To check the task wheather it is completed or not
+  // use state for maintaining the new task to be added
+  const [newItem, setNewItem] = useState('');
 
-          function handleCheck (id){
-              const listitems = items.map(item => item.id === id ? {...item ,checked: !item.checked} : item)
-              setItem(listitems)
-              localStorage.setItem("todolist",JSON.stringify(listitems))
-          }
+  // To add new task with the existing state
+  function handleSubmit(e) {
+    e.preventDefault();
+    addItem(newItem);
+    setNewItem('');
+  }
 
-          //usestate for maintaining the new task to be added
+  function addItem(task) {
+    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    const addItems = { id, task, checked: false };
+    const updatedItems = [...items, addItems];
+    setItems(updatedItems);
+    localStorage.setItem("todolist", JSON.stringify(updatedItems));
+  }
 
-          const [newItem , setnewItem] = useState('')
+  // use state for maintaining the search item
+  const [searchItem, setSearchItem] = useState('');
 
-          //To pass the event 
-
-          function handleSubmit(e){
-              e.preventDefault();
-              console.log("welcome handle submit")
-              setnewItem(newItem)
-              addItem(newItem)
-              setnewItem('')
-          }
-      
-          //To add new task with the existing state
-
-          function addItem() {
-              const id = items.length ? items[items.length - 1].id + 1 : 1;
-              const addItems = { id, task: newItem, checked: false };
-              const listItems = [...items, addItems];  //...items is an spread operator which makes the existing state to be stay there and append a new item with it
-              setItem(listItems);
-              localStorage.setItem("todolist", JSON.stringify(listItems));
-            }
-  
-      
   return (
     <div className="app">
-      <Header/>
-       <Counter />
-       <Todo  items={items} newItem={newItem} setnewItem={setnewItem}  handleCheck={handleCheck} handleDelete={handleDelete} handleSubmit={handleSubmit}/>
-      
+      <Header />
+      <Todo
+        items={items.filter(item => item.task.toLowerCase().includes(searchItem.toLowerCase()))}
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+        handleSubmit={handleSubmit}
+        searchItem={searchItem}
+        setSearchItem={setSearchItem}
+      />
+      <Footer />
     </div>
   );
 }

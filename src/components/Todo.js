@@ -2,22 +2,31 @@ import React, { useState } from "react";
 import {FaTrash,FaPlus } from 'react-icons/fa';
 
 
-const Todo = ({items,handleCheck,handleDelete,handleSubmit,newItem,setnewItem}) => {
+const Todo = ({items,handleCheck,handleDelete,handleSubmit,newItem,setNewItem,searcItem,setSearchItem}) => {
    
 
     return(
         <div className=" container mt-20 border border-gray-950 mx-auto w-60 p-3">
-            <h1 className="text-4xl">Todolist</h1>
+            <h1 className="text-4xl text-center">Todolist</h1>
             <form className="mt-4" onSubmit={handleSubmit}>   
-                <label class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
                     
                     <input type="text"  class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Add items" 
                     value={newItem}
-                    onChange={(e) => setnewItem(e.target.value)}
+                    onChange={(e) => setNewItem(e.target.value)}
                     />
                    <FaPlus role="button" type="submit"  class=" absolute right-2.5 top-4" />         
-                 </div>
+                 </div>         
+            </form>
+
+            <form className="mt-4" onChange={(e) => e.preventDefault()}>   
+                <div class="">
+                    
+                    <input type="text"  class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search items" 
+                           value={searcItem}
+                           onChange={(e) => setSearchItem(e.target.value)}
+                   />
+                 </div>         
             </form>
 
             <ul >
