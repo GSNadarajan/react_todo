@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Todo from './components/Todo';
 import Footer from './components/Footer';
+import Colorgen from './components/Colorgen';
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
 return (
     <div className="app">
       <Header />
+      <Colorgen />
       
       <Todo
         items={items.filter(item => item.task.toLowerCase().includes(searchItem.toLowerCase()))}

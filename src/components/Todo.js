@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {FaTrash,FaPlus } from 'react-icons/fa';
-import Modal from "./Modal";
+
 
 
 const Todo = ({items,handleCheck,handleDelete,handleSubmit,newItem,setNewItem,searcItem,setSearchItem}) => {
@@ -23,7 +23,7 @@ const Todo = ({items,handleCheck,handleDelete,handleSubmit,newItem,setNewItem,se
 
 
 
-            <h1 className="text-4xl text-center">Todolist</h1>
+            <h1 className="text-4xl text-center mb-5">Todolist</h1>
             <form className="mt-4" onSubmit={handleSubmit}>   
                 <div class="relative">
                     
