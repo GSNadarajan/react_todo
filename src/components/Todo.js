@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import {FaTrash,FaPlus } from 'react-icons/fa';
+import React from "react";
+import {FaTrash } from 'react-icons/fa';
+import { useRef } from "react";
+
 
 
 
 const Todo = ({items,handleCheck,handleDelete,handleSubmit,newItem,setNewItem,searcItem,setSearchItem}) => {
+
+   // Useref is an another hook which is used for changing the focus of the input field during onclick event in button
+    const inputRef = useRef();
    
 
     return(
@@ -11,32 +16,21 @@ const Todo = ({items,handleCheck,handleDelete,handleSubmit,newItem,setNewItem,se
         
         <div className=" container mt-20 border border-gray-950 mx-auto md:mx-auto w-72 md:w-80 p-3 ">
 
-
-        {/* this is comment */}
-
-        
-       
-
-         {/* this is comment */}
-
-
-
-
-
             <h1 className="text-4xl text-center mb-5">Todolist</h1>
             <form className="mt-4" onSubmit={handleSubmit}>   
                 <div class="relative">
                     
                     <input type="text"  class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Add items" 
-                    value={newItem}
-                    onChange={(e) => setNewItem(e.target.value)}
+                      ref={inputRef}
+                      value={newItem}
+                      onChange={(e) => setNewItem(e.target.value)}
                     />
                    {/* <FaPlus role="button" type="submit" onSubmit={handleSubmit} class=" absolute right-2.5 top-4" />   */}
                    <span className=" text-white ">
-                      <button role="button" type="submit" onSubmit={handleSubmit}  class="bg-blue-400 absolute rounded-lg right-2.5 top-2 p-1 px-3 text-2xl" >+</button>       
+                      <button role="button" type="submit" onClick={() => inputRef.current.focus()}  class="bg-blue-400 absolute rounded-lg right-2.5 top-2 p-1 px-3 text-2xl" >+</button>       
                    </span>
                  </div>         
-            </form>
+             </form>
 
             <form className="mt-4" onChange={(e) => e.preventDefault()}>   
                 <div class="">

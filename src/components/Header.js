@@ -2,8 +2,8 @@ import React from "react";
 
 const Header = () =>{
     return(
-        <div className="">
-          <header>
+        <div className="fixed top-0 left-0 right-0  bg-blue-400 p-3">
+          <header className="">
             <nav class="bg-blue-400 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-white-800">
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <a href="#" class="flex items-center">

@@ -4,7 +4,7 @@ import { useState } from "react";
 const Colorgen = () => {
 
     const [colorValue, setcolorValue] = useState('')
-    const [isdarkest, setisDarkest] = useState(false)
+    // const [isdarkest, setisDarkest] = useState(true)
     return(
       <div>
         
@@ -13,7 +13,7 @@ const Colorgen = () => {
             <div className="border border-gray-900 mx-auto h-40 mt-2 rounded-lg" style={
                 {
                     backgroundColor : colorValue,
-                    color : isdarkest ? "#000" : "#FFF"
+                    // color : isdarkest ? "#000" : "#FFF"
                 }}
             >
                 <p className="mt-14 text-center h-10">{colorValue ? colorValue : "enter some color"}</p>              
@@ -22,6 +22,7 @@ const Colorgen = () => {
             <form className="mt-5" onsubmit = {(e) => e.preventDefault()}>
                 <div class="">
                     <input
+                    autoFocus
                      type="text"
                      class="bg-gray-50 border border-gray-900 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-900 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      value={colorValue}

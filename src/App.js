@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Header from './components/Header';
 import Todo from './components/Todo';
 import Footer from './components/Footer';
 import Colorgen from './components/Colorgen';
+import Card from './components/Card';
 
 
-function App() {
+
+const App = () => {
       // use state for maintaining the tasks
       const [items, setItems] = useState(JSON.parse(localStorage.getItem("todolist")) || []);
 
@@ -59,12 +61,17 @@ function App() {
           setIsModalOpen(false);
         }
     
+        //Useeffect
+
+        useEffect(() =>{
+           console.log("rendering")
+        }, [items])
 
 return (
-    <div className="app">
+    <div className="">
       <Header />
-      <Colorgen />
-      
+       {/* <Colorgen />  */}
+      <Card />
       <Todo
         items={items.filter(item => item.task.toLowerCase().includes(searchItem.toLowerCase()))}
         newItem={newItem}
@@ -79,7 +86,7 @@ return (
         isModalOpen = {isModalOpen}
         setIsModalOpen = {setIsModalOpen}
       />
-     
+      
       <Footer />
     </div>
   );
