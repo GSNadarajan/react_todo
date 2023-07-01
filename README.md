@@ -68,3 +68,108 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### react components
+
+Functional components
+Class components
+
+### react styling 
+
+1) create separate css file
+2) write inline styling "camelcase"
+3) declare styling inside to js variable
+
+### Functional components
+
+1) normal function
+     
+     function function_name(){
+        return(
+          JSX content
+        )
+     }
+
+2) Arrow function
+ 
+    const function_name = () =>
+    {
+        JSX content
+    }
+
+### Function rules 
+
+If we create a function like it will alert something like hello   
+
+const Hello = () =>y{
+   alert(hello);
+}
+
+to call the function we use 
+### `function_name without ()` if we use () the function will be called automatically when we load the page
+
+### if we need to pass the argument as a parameter in the function we should use 'anonymous function'
+
+### `anonymous function`
+
+### SYNTAX
+
+() => {Function_name(arguments)}
+
+
+### `function syntax for passing arguments` => const Handleclick = () => { `hello this is ${name}`}
+
+to call the above function inside JSX <button onClick={() => Handleclick(nattu) }
+
+
+### Event handling 
+
+### `Use states in React`
+
+There are some rules in usestates declaration or usage
+
+1)We will not use the `usestate()` inside a `class components`
+
+2)We will not use the `usestate()` inside a `conditional statements`
+
+3) try to call the function as like ()=>{function name} 
+
+### `list and keys` 
+
+Lists and keys are nothing but we have usestate method inside a default values like two or more objects we will render it by using `Mapping` function 
+
+### `REACT ICONS`
+
+1) install through `npm install react-icons --save`
+
+2) git repo for react icons `https://github.com/react-icons/react-icons#readme`
+
+### This is url for react icons `https://react-icons.github.io/react-icons/`
+
+### `React props`
+
+React props are like passing properties into a components 
+
+for example : we've header component in index.js
+
+<header title='Nattu'/>
+
+1) To pass the title as props in the header component we will pass props as argument in the header function and we use `props.title` inside an `JSX element` like <h1>{props.title}</h1>
+
+`Using these props we can able to share data from parent to child component but not possible with child to child components` 
+
+### `Useref`
+
+Useref is an another hook which basically used for focus in input field
+
+###  `Useeffect`
+
+Useeffect is also a hook in react which is a function and it renders everytime when some actions did in our site 
+
+useeffect(
+() => {
+  console.log("rendering")
+},[])
+
+Here this is an example for useffect nd rendering text is printing in the console tab when any actions being did in the page and
+[] -> this is a dependencies of the useeffect hook basically here it has no dependencies
